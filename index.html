@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#ffe8f2">
+  <meta name="description" content="Sebuah kejutan kecil untuk hari spesialmu. Selamat ulang tahun, sayang!">
+  <title>Happy Birthday, Sayang! 🎀</title>
+  <style>
+    :root {
+      --pink: #ff8fbd;
+      --hot: #e94f91;
+      --deep: #8f3d79;
+      --lavender: #c9b5f5;
+      --cream: #fffafc;
+      --ink: #68445f;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0; min-height: 100vh; overflow-x: hidden;
+      color: var(--ink);
+      font-family: "Trebuchet MS", "Segoe UI", sans-serif;
+      background:
+        radial-gradient(circle at 8% 12%, #fff 0 5px, transparent 6px),
+        radial-gradient(circle at 92% 20%, #fff 0 7px, transparent 8px),
+        linear-gradient(145deg, #fff5fa 0%, #ffe7f1 48%, #f3eaff 100%);
+    }
+    .sparkle-layer { position: fixed; inset: 0; pointer-events: none; overflow: hidden; z-index: 0; }
+    .floaty { position: absolute; opacity: .75; animation: drift 7s ease-in-out infinite; }
+    .floaty:nth-child(1) { left: 5%; top: 14%; font-size: 28px; }
+    .floaty:nth-child(2) { right: 7%; top: 10%; font-size: 34px; animation-delay: -2s; }
+    .floaty:nth-child(3) { left: 9%; bottom: 18%; font-size: 30px; animation-delay: -4s; }
+    .floaty:nth-child(4) { right: 8%; bottom: 14%; font-size: 27px; animation-delay: -1s; }
+    @keyframes drift { 0%,100% { transform: translateY(0) rotate(-8deg); } 50% { transform: translateY(-18px) rotate(9deg); } }
+
+    main { position: relative; z-index: 1; width: min(920px, 100%); margin: auto; padding: 26px 18px 56px; }
+    .top-note { text-align: center; color: #b45c91; font-size: .9rem; letter-spacing: .13em; text-transform: uppercase; font-weight: 800; }
+    .hero { text-align: center; padding: 20px 0 10px; }
+    h1 {
+      margin: 8px auto 12px; max-width: 780px;
+      color: var(--hot); font-size: clamp(2.7rem, 9vw, 5.8rem);
+      line-height: .98; letter-spacing: -.055em;
+      text-shadow: 3px 4px 0 #fff, 6px 7px 0 #f6c5dc;
+    }
+    .subtitle { font-size: clamp(1rem, 3vw, 1.2rem); color: #98658c; margin: 18px auto 0; }
+    .sticker { display: inline-block; background: #fff; padding: 8px 16px; border-radius: 999px; box-shadow: 0 7px 20px #d78db333; transform: rotate(-3deg); font-weight: 800; color: #c44d8b; }
+    .photo-wrap { width: min(390px, 88vw); margin: 28px auto 24px; padding: 12px 12px 42px; background: #fff; border-radius: 22px; box-shadow: 0 18px 45px #a85e8830; transform: rotate(1.5deg); position: relative; }
+    .photo-wrap::before { content: "♡"; position: absolute; right: -17px; top: -25px; color: #ef77a8; font-size: 55px; transform: rotate(15deg); }
+    .photo-wrap img { display: block; width: 100%; height: auto; border-radius: 13px; }
+    .photo-caption { position: absolute; bottom: 12px; left: 0; right: 0; text-align: center; color: #b85b91; font-family: Georgia, serif; font-style: italic; font-size: 1.08rem; }
+    .card { background: #ffffffd9; border: 2px solid #fff; border-radius: 28px; padding: clamp(20px, 5vw, 34px); margin: 24px auto; box-shadow: 0 12px 35px #bd78a51c; backdrop-filter: blur(8px); }
+    .card h2 { margin: 0 0 12px; color: #d65393; text-align: center; font-size: clamp(1.45rem, 5vw, 2rem); }
+    .card p { line-height: 1.8; margin: 10px 0; text-align: center; }
+    .music-card { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; justify-content: center; text-align: center; }
+    .music-icon { width: 54px; height: 54px; border-radius: 18px; display: grid; place-items: center; background: #ffe0ee; font-size: 27px; }
+    .music-copy { min-width: 170px; }
+    .music-copy strong { display: block; color: #a64c83; }
+    .music-copy small { color: #a77c9a; }
+    audio { width: min(100%, 390px); accent-color: var(--hot); }
+    .surprise-btn {
+      border: 0; cursor: pointer; border-radius: 999px; padding: 15px 25px;
+      color: white; font-size: 1rem; font-weight: 800; letter-spacing: .02em;
+      background: linear-gradient(135deg, #ff83b5, #bd7be6);
+      box-shadow: 0 8px 0 #d66ba4, 0 14px 24px #c66ba544;
+      transition: transform .18s ease, box-shadow .18s ease;
+    }
+    .surprise-btn:hover { transform: translateY(-3px); box-shadow: 0 11px 0 #d66ba4, 0 18px 28px #c66ba544; }
+    .surprise-btn:active { transform: translateY(4px); box-shadow: 0 4px 0 #d66ba4; }
+    .letter { display: none; margin-top: 22px; padding: 24px; border-radius: 20px; background: #fff7fb; border: 2px dashed #f2a7c9; animation: pop .45s ease both; }
+    .letter.show { display: block; }
+    .letter p { text-align: left; }
+    @keyframes pop { from { opacity: 0; transform: translateY(12px) scale(.97); } to { opacity: 1; transform: translateY(0) scale(1); } }
+    .wish-list { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-top: 20px; }
+    .wish { text-align: center; background: #fff4f9; border-radius: 18px; padding: 17px 10px; }
+    .wish span { display: block; font-size: 1.7rem; margin-bottom: 7px; }
+    .wish strong { color: #b95691; font-size: .95rem; }
+    footer { text-align: center; padding: 26px 10px 0; color: #ad7a9d; font-size: .9rem; }
+    .heart-pop { position: fixed; z-index: 10; pointer-events: none; animation: rise 2.2s ease-out forwards; font-size: 22px; }
+    @keyframes rise { 0% { opacity: 0; transform: translateY(0) scale(.5) rotate(0); } 15% { opacity: 1; } 100% { opacity: 0; transform: translateY(-230px) scale(1.4) rotate(25deg); } }
+    @media (max-width: 520px) {
+      main { padding-left: 14px; padding-right: 14px; }
+      .wish-list { grid-template-columns: 1fr; }
+      .wish { display: flex; align-items: center; justify-content: center; gap: 12px; padding: 12px; }
+      .wish span { margin: 0; }
+    }
+    @media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; scroll-behavior: auto !important; } }
+  </style>
+</head>
+<body>
+  <div class="sparkle-layer" aria-hidden="true">
+    <span class="floaty">✨</span><span class="floaty">💗</span><span class="floaty">🌷</span><span class="floaty">⭐</span>
+  </div>
+
+  <main>
+    <header class="hero">
+      <div class="top-note">✦ a little page made with love ✦</div>
+      <div class="sticker">special day alert! 🎀</div>
+      <h1>Happy Birthday,<br>Sayang! 💗</h1>
+      <p class="subtitle">Hari ini dunia punya alasan ekstra untuk tersenyum: karena kamu lahir! 🌷</p>
+    </header>
+
+    <figure class="photo-wrap">
+      <img src="assets/foto-ulang-tahun.jpg" alt="Foto kenangan ulang tahun">
+      <figcaption class="photo-caption">the birthday star ✨</figcaption>
+    </figure>
+
+    <section class="card">
+      <h2>For the sweetest person ♡</h2>
+      <p>Selamat ulang tahun, sayanggg! 🧁</p>
+      <p>Semoga hari-harimu selalu dipenuhi hal-hal baik, tawa yang tulus, orang-orang yang menyayangimu, dan banyak alasan kecil untuk bahagia.</p>
+      <p>Semoga semua harapan baikmu satu per satu menemukan jalannya. Tetap jadi kamu yang istimewa, ya! 💐</p>
+      <div class="wish-list">
+        <div class="wish"><span>🌈</span><strong>More happiness</strong></div>
+        <div class="wish"><span>🦋</span><strong>Beautiful surprises</strong></div>
+        <div class="wish"><span>🍰</span><strong>Sweet memories</strong></div>
+      </div>
+    </section>
+
+    <section class="card music-card">
+      <div class="music-icon">🎵</div>
+      <div class="music-copy">
+        <strong>Birthday song for you</strong>
+        <small>Putar lagunya sambil menikmati hari spesialmu ♡</small>
+      </div>
+      <audio controls preload="metadata">
+        <source src="assets/lagu-ulang-tahun.mp3" type="audio/mpeg">
+        Browser kamu belum mendukung pemutar audio.
+      </audio>
+    </section>
+
+    <section class="card" style="text-align:center">
+      <h2>Ada surat kecil buat kamu… 💌</h2>
+      <p>Jangan lupa buka kejutan spesialnya, ya!</p>
+      <button class="surprise-btn" id="surpriseBtn" type="button">Buka Kejutan 💌</button>
+      <div class="letter" id="letter" aria-live="polite">
+        <h2 style="margin-top:0">Dear, Sayang ♡</h2>
+        <p>Di hari spesial ini, aku cuma mau bilang: terima kasih sudah menjadi bagian dari cerita yang indah. Semoga kamu selalu punya keberanian untuk mengejar mimpi, hati yang tenang saat menghadapi hari sulit, dan kebahagiaan yang datang dari hal-hal sederhana.</p>
+        <p>Hari ini adalah tentang kamu, jadi nikmati setiap detiknya. Kamu pantas mendapatkan banyak hal baik.</p>
+        <p style="text-align:center; color:#d65393; font-weight:800">Once again, happy birthday! I’m cheering for you, always. 💗</p>
+        <p style="text-align:center; font-size:1.5rem">🎀 🧸 🌷 🧁 💕</p>
+      </div>
+    </section>
+
+    <footer>
+      Made with ♡, a little sparkle, and lots of birthday wishes.<br>
+      <span>Semoga hari ini semanis kue ulang tahunmu! 🍓</span>
+    </footer>
+  </main>
+
+  <script>
+    const button = document.getElementById('surpriseBtn');
+    const letter = document.getElementById('letter');
+    button.addEventListener('click', () => {
+      const opened = letter.classList.toggle('show');
+      button.textContent = opened ? 'Tutup Surat 💗' : 'Buka Kejutan 💌';
+      if (opened) {
+        for (let i = 0; i < 22; i++) {
+          setTimeout(() => {
+            const heart = document.createElement('span');
+            heart.className = 'heart-pop';
+            heart.textContent = ['💗','💖','💕','✨','🌸'][Math.floor(Math.random() * 5)];
+            heart.style.left = (8 + Math.random() * 84) + 'vw';
+            heart.style.top = (55 + Math.random() * 35) + 'vh';
+            document.body.appendChild(heart);
+            setTimeout(() => heart.remove(), 2300);
+          }, i * 55);
+        }
+      }
+    });
+  </script>
+</body>
+</html>
